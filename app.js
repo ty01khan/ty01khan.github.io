@@ -24,7 +24,7 @@ let userDetails = JSON.parse(localStorage.getItem("userDetails"));
     var loggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
     loggedIn.splice(0, 1);
     localStorage.setItem("loggedInUser", JSON.stringify(loggedIn));
-    location.href = "loginpage.html";
+    location.href = "index.html";
 }
 
 /**
