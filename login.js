@@ -1,12 +1,13 @@
 let userList;
-
+let userDetails;
 if(localStorage.getItem("userList") === null) {
     let x = [
-        {username: "admin", password: "admin"},
-        {username: "vineetks", password: "vineetks"},
-        {username: "rahul", password: "rahulPass"},
-        {username: "shayam", password: "shayamPass"},
-        {username: "abhinav", password: "abhinavPass"}
+        {username: "admin", password: "admin", language: "English"},
+        {username: "vineetks", password: "vineetks", language: "English"},
+        {username: "salman", password: "salmankhan", language: "Hindi"},
+        {username: "aamir", password: "aamirkhan", language: "Hindi"},
+        {username: "shahrukh", password: "shahrukh", language: "English"},
+        {username: "amitabh", password: "bachchan", language: "Hindi"}
     ];
     localStorage.setItem("userList", JSON.stringify(x));
     userList = JSON.parse(localStorage.getItem("userList"));
@@ -15,7 +16,82 @@ else {
     userList = JSON.parse(localStorage.getItem("userList"));
 }
 
-let userDetails = JSON.parse(localStorage.getItem("userDetails"));
+if(localStorage.getItem("userDetails") === null) {
+    let x = [];
+    x.push(
+        {
+            firstname: "Admin",
+            lastname: "",
+            username: "admin",
+            phone: "6524789562",
+            address: "Masjid Banda, Hyderabad",
+            language: "English",
+            profile: "admin.webp",
+            email: "admin@beehyv.com",
+            password: "admin"
+        },
+        {
+            firstname: "Vineet",
+            lastname: "KS",
+            username: "vineetks",
+            phone: "6524789562",
+            address: "Masjid Banda, Hyderabad",
+            language: "English",
+            profile: "vineet.jpg",
+            email: "vineetks@beehyv.com",
+            password: "vineetks"
+        },
+        {
+            firstname: "Salman",
+            lastname: "Khan",
+            username: "salman",
+            phone: "6524789562",
+            address: "Galaxy Apartment, Bandra",
+            language: "Hindi",
+            profile: "Salman.jpg",
+            email: "being.human@socialworker.net",
+            password: "salmankhan"
+        },
+        {
+            firstname: "Aamir",
+            lastname: "Khan",
+            username: "aamir",
+            phone: "6524789562",
+            address: "Freeda Apartments, Bandra West",
+            language: "Hindi",
+            profile: "Aamir.jpg",
+            email: "maloomnhi@gmail.com",
+            password: "aamirkhan"
+        },
+        {
+            firstname: "Shah Rukh",
+            lastname: "Khan",
+            username: "shahrukh",
+            phone: "2226058704",
+            address: "Mannat, Bandra",
+            language: "English",
+            profile: "Shahrukh.jpg",
+            email: "srkfans@redchillies.com",
+            password: "shahrukh"
+        },
+        {
+            firstname: "Amitabh",
+            lastname: "Bachchan",
+            username: "amitabh",
+            phone: 6524789562,
+            address: "Jalsa, Juhu",
+            language: "Hindi",
+            profile: "Amitabh.jpg",
+            email: "snrbachchan@gmail.com",
+            password: "bachchan"
+        }
+    );
+    localStorage.setItem("userDetails", JSON.stringify(x));
+    userDetails = JSON.parse(localStorage.getItem("userDetails"));
+}
+else {
+    userDetails = JSON.parse(localStorage.getItem("userDetails"));
+}
 
 /**
  * Login
@@ -35,7 +111,10 @@ let userDetails = JSON.parse(localStorage.getItem("userDetails"));
                     location.href = url;
                     if(localStorage.getItem("loggedInUser") === null) {
                         let x = [];
-                        x.push(userList[i]);
+                        x.push({
+                            username: userList[i].username,
+                            password: userList[i].password
+                        });
                         localStorage.setItem("loggedInUser", JSON.stringify(x));
                     }
                     else {
@@ -48,7 +127,10 @@ let userDetails = JSON.parse(localStorage.getItem("userDetails"));
                             }
                         }
                         if(cnt == 0) {
-                            loggedIn.push(userList[i]);
+                            loggedIn.push({
+                                username: userList[i].username,
+                                password: userList[i].password
+                            });
                             localStorage.setItem("loggedInUser", JSON.stringify(loggedIn));
                         }
                     }

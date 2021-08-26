@@ -74,7 +74,7 @@ function isUserExist() {
                 localStorage.setItem("userList", JSON.stringify(userList));
                 localStorage.setItem("loggedInUser", JSON.stringify(loggedIn));
 
-                location.href = "index.html";
+                location.href = "loginpage.html";
                 break;
             }
         }

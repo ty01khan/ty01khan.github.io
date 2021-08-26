@@ -1,30 +1,5 @@
-let userDetails;
-let userList;
-
-if(localStorage.getItem("userDetails") === null) {
-    let x = [];
-    localStorage.setItem("userDetails", JSON.stringify(x));
-    userDetails = JSON.parse(localStorage.getItem("userDetails"));
-}
-else {
-    userDetails = JSON.parse(localStorage.getItem("userDetails"));
-}
-
-if(localStorage.getItem("userList") === null) {
-    let x = [
-        {username: "admin", password: "admin"},
-        {username: "vineetks", password: "vineetks"},
-        {username: "rahul", password: "rahulPass"},
-        {username: "shayam", password: "shayamPass"},
-        {username: "abhinav", password: "abhinavPass"}
-    ];
-    localStorage.setItem("userList", JSON.stringify(x));
-    userList = JSON.parse(localStorage.getItem("userList"));
-}
-else {
-    userList = JSON.parse(localStorage.getItem("userList"));
-}
-
+let userDetails = JSON.parse(localStorage.getItem("userDetails"));
+let userList = JSON.parse(localStorage.getItem("userList"));
 let cntErr = 0;
 
 /**
@@ -46,7 +21,6 @@ function Signup() {
  */
 function checkFilled() {
     const fname = document.querySelector("#firstname").value;
-    const lname = document.querySelector("#lastname").value;
     const uname = document.querySelector("#uname").value;
     const phone = document.querySelector("#phone").value;
     const eID = document.querySelector("#eid").value;
@@ -58,7 +32,7 @@ function checkFilled() {
     const cpass = document.querySelector("#cpass").value;
     const errorUname = document.querySelector(".filled");
 
-    if(fname == "" || lname == "" || uname == "" ||
+    if(fname == "" || uname == "" ||
      phone == "" || eID == "" || addr == "" || 
      dp == "" || dob == "" || email == "" ||
      pass == "" || cpass == "") {
@@ -157,7 +131,7 @@ function isValidAge() {
 /**
  * function checking whether entered email is unique or not
  */
-function checkEmail() {
+ function checkEmail() {
     const emailid = document.querySelector("#email");
     const errorEmail = document.querySelector(".email");
     let chk = 0;
@@ -241,7 +215,8 @@ function signupValidation() {
         
         userList.push({
             username: uname,
-            password: pass
+            password: pass,
+            language: lang
         });
 
         localStorage.setItem("userDetails", JSON.stringify(userDetails));

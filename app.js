@@ -1,20 +1,3 @@
-// let userList;
-
-// if(localStorage.getItem("userList") === null) {
-//     let x = [
-//         {username: "admin", password: "admin"},
-//         {username: "vineetks", password: "vineetks"},
-//         {username: "rahul", password: "rahulPass"},
-//         {username: "shayam", password: "shayamPass"},
-//         {username: "abhinav", password: "abhinavPass"}
-//     ];
-//     localStorage.setItem("userList", JSON.stringify(x));
-//     userList = JSON.parse(localStorage.getItem("userList"));
-// }
-// else {
-//     userList = JSON.parse(localStorage.getItem("userList"));
-// }
-
 let userDetails = JSON.parse(localStorage.getItem("userDetails"));
 
 /**
@@ -22,9 +5,16 @@ let userDetails = JSON.parse(localStorage.getItem("userDetails"));
  */
  function Signout() {
     var loggedIn = JSON.parse(localStorage.getItem("loggedInUser"));
-    loggedIn.splice(0, 1);
-    localStorage.setItem("loggedInUser", JSON.stringify(loggedIn));
-    location.href = "index.html";
+    const params = (new URL(document.location)).searchParams;
+    const uname = params.get('uname');
+
+    for(let i = 0; i < loggedIn.length; i++) {
+        if(loggedIn[i].username == uname) {
+            loggedIn.splice(i, 1);
+            localStorage.setItem("loggedInUser", JSON.stringify(loggedIn));
+            location.href = "loginpage.html";
+        }
+    }
 }
 
 /**
@@ -93,7 +83,6 @@ function saveDetails() {
 
     document.getElementById("edit").style.display="block";
     document.getElementById("save").style.display="none";
-    alert("Your informations are updated.");
 
     const params = (new URL(document.location)).searchParams;
     const uname = params.get('uname');
@@ -108,4 +97,6 @@ function saveDetails() {
             break;
         }
     }
+
+    alert("Your informations are updated.");
 }
