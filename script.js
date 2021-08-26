@@ -249,7 +249,10 @@ function signupValidation() {
 
         if(localStorage.getItem("loggedInUser") === null) {
             let x = [];
-            x.push(uname);
+            x.push({
+                username: uname,
+                password: pass
+            });
             localStorage.setItem("loggedInUser", JSON.stringify(x));
         }
         else {
