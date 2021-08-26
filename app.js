@@ -12,7 +12,7 @@ let userDetails = JSON.parse(localStorage.getItem("userDetails"));
         if(loggedIn[i].username == uname) {
             loggedIn.splice(i, 1);
             localStorage.setItem("loggedInUser", JSON.stringify(loggedIn));
-            location.href = "loginpage.html";
+            location.href = "index.html";
         }
     }
 }
