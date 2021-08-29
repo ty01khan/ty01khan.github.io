@@ -149,6 +149,6 @@ else {
     if(i == userList.length) {
         errorLogin.style = "block";
         errorLogin.classList.add("failed");
-        errorLogin.textContent = "Error! Incorrect username or password or language.";
+        errorLogin.textContent = "Error! Incorrect username or password.";
     }
 }

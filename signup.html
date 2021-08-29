@@ -22,11 +22,16 @@
             height: 100%;
         }
         .eid.notunique, .username.notunique, .invalid-age.unmatched, 
-        .phone-error.unmatched, .error-text.unmatched, .email.notunique{
+        .phone-error.unmatched, .error-text.unmatched, .email.notunique,
+        .isValidPass.no{
             color: red;
         }
+        .isValidPass{
+            color: red;
+            font-size: 12px;
+        }
         .eid.unique, .username.unique, .invalid-age.matched, 
-        .phone-error.matched, .email.unique, .error-text.matched {
+        .phone-error.matched, .email.unique, .error-text.matched, .isValidPass.yes {
             color: #588C64;
         }
         .filled.not {
@@ -110,17 +115,26 @@
                 </div>
                 <div class="form-group">
                     <label for="email"><b>Email:</b></label>
-                    <div><input type="email" class="form-control" id="email" placeholder="email@example.com" required></div>
+                    <div><input type="email" class="form-control" id="email" placeholder="email@domain.com" required></div>
                     <div class="email"></div>
                     <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
-                
             </form>
+
             <form id="identicalForm" class="form-horizontal">
                 <div class="form-group">
                     <label for="pass"><b>Password:</b></label>
                     <div>
                         <input type="password" class="form-control" id="pass" placeholder="Enter password" required>
+                    </div>
+                    <div class="isValidPass">Password must follow the followings rule:
+                        <ul>
+                            <li>Should be aleast 8 characters long</li>
+                            <li>Should contain atleast one Uppercase character (A-Z)</li>
+                            <li>Should contain atleast one Lowercase character (a-z)</li>
+                            <li>Should contain digit (0-9)</li>
+                            <li>Shoud contains atleast one special character (@#$%&*)</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="form-group">
@@ -136,7 +150,7 @@
                 <div class="form-group mt-5">
                     <button type="reset" onclick="Signup();" class="form-group btn btn-primary btn-block">Signup</button>
                 </div>
-                <div class="text-center mt-4">Already have an account? <a href="index.html">Sign in here!</a></div>
+                <div class="text-center mt-4">Already have an account? <a href="loginpage.html">Sign in here!</a></div>
             </form>
         </div>
     </div>

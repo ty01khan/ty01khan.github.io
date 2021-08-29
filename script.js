@@ -159,16 +159,67 @@ function isSamePassword() {
     const pswrd_1 = document.querySelector("#pass");
     const pswrd_2 = document.querySelector("#cpass");
     const errorText = document.querySelector(".error-text");
+    const isValidPass = document.querySelector(".isValidPass");
+
     const btn = document.querySelector("button");
     if(pswrd_1.value != pswrd_2.value){
         errorText.style.display = "block";
         errorText.classList.add("unmatched");
         errorText.textContent = "Error! Password Not Matched";
         cntErr++;
-    }else{
+    }
+    else{
         errorText.style.display = "block";
         errorText.classList.add("matched");
         errorText.textContent = "Nice! Password Matched";
+    }
+
+    if(pswrd_1.value.length >= 8) {
+        let cnt_u = 0, cnt_l = 0, cnt_sp = 0, cnt_d = 0;
+        let i = 0;
+        for(i = 0; i < pswrd_1.value.length; i++) {
+            const asciiVal = pswrd_1.value.charCodeAt(i);
+            alert(asciiVal);
+            if(asciiVal >= 48 && asciiVal <= 57) {
+                cnt_d++;
+            }
+            else if((asciiVal >= 35 && asciiVal <= 38) || (asciiVal == 42) || (asciiVal == 64)) {
+                cnt_sp++;
+            }
+            else if(asciiVal >= 65 && asciiVal <= 90) {
+                cnt_u++;
+            }
+            else if(asciiVal >= 97 && asciiVal <= 122) {
+                cnt_l++;
+            }
+            else {
+                isValidPass.style.display = "block";
+                isValidPass.classList.add("no");
+                isValidPass.textContent = "Error! Invalid password.";
+                cntErr++;
+                break;
+            }
+        }
+
+        if(i == pswrd_1.value.length) {
+            if(cnt_l >= 1 && cnt_u >= 1 && cnt_sp >= 1 && cnt_d >= 1) {
+                isValidPass.style.display = "block";
+                isValidPass.classList.add("yes");
+                isValidPass.textContent = "Nice! Valid password.";
+            }
+            else {
+                isValidPass.style.display = "block";
+                isValidPass.classList.add("no");
+                isValidPass.textContent = "Error! Invalid password.";
+                cntErr++;
+            }
+        }
+    }
+    else {
+        isValidPass.style.display = "block";
+        isValidPass.classList.add("no");
+        isValidPass.textContent = "Error! Password is only " + pswrd_1.value.length + " characters long.";
+        cntErr++;
     }
 }
 
