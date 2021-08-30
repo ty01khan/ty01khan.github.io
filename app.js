@@ -12,7 +12,7 @@ let userDetails = JSON.parse(localStorage.getItem("userDetails"));
         if(loggedIn[i].username == uname) {
             loggedIn.splice(i, 1);
             localStorage.setItem("loggedInUser", JSON.stringify(loggedIn));
-            location.href = "index.html";
+            location.href = "loginpage.html";
         }
     }
 }
@@ -31,9 +31,9 @@ window.addEventListener('load', () => {
             document.getElementById('result-name').innerHTML = userDetails[i].firstname + " " + userDetails[i].lastname;
             document.getElementById('result-address').innerHTML = userDetails[i].address;
             document.getElementById('result-phone').innerHTML = userDetails[i].phone;
-            document.getElementById('link-mail').href = userDetails[i].email;
+            //document.getElementById('link-mail').href = "";
             document.getElementById('result-email').innerHTML = userDetails[i].email;
-            document.getElementById('link-site').href = "http://home.iitpkd.ac.in/~" + uname;
+            //document.getElementById('link-site').href = "http://home.iitpkd.ac.in/~" + uname;
             document.getElementById('result-link').innerHTML = "http://home.iitpkd.ac.in/~" + uname;
             document.getElementById('result-lang').innerHTML = userDetails[i].language;
             document.getElementById('linkedin').href = "https://www.linkedin.com/in/" + uname + "/";
