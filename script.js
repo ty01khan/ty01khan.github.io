@@ -179,7 +179,6 @@ function isSamePassword() {
         let i = 0;
         for(i = 0; i < pswrd_1.value.length; i++) {
             const asciiVal = pswrd_1.value.charCodeAt(i);
-            alert(asciiVal);
             if(asciiVal >= 48 && asciiVal <= 57) {
                 cnt_d++;
             }
